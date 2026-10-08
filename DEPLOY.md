@@ -38,6 +38,10 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 - **Responsive images**: new `public/gallery/w900/*.jpg` (900 px wide, progressive, q80, 55–290 KB) with `srcset`/`sizes`, so phones no longer download the 1800 px files (220 KB–1.25 MB). 1800 px originals are unchanged (already ~q85).
 - Small visual fixes: nav monogram now uses a square crop (`logo-monogram-dc-square.png`) instead of squashing the 16:9 PNG; footer lockup no longer stretched (it was being stretched by flexbox).
 
+## 2a. Service-area wording (Kevin, Oct 7, 2026)
+
+Service area everywhere is **"California Valley, Bay Area & Sacramento Region"**: home + book meta descriptions and OG/Twitter descriptions, hero lead, Services intro, About ("California Valley wedding photographer", "California Valley home"), FAQ travel answer (visible + JSON-LD, kept identical), Contact, and both footers. `<title>`s unchanged (adding all three regions would push them past ~60 chars). JSON-LD `areaServed`: Modesto, Stockton, Turlock, Manteca, Merced, Tracy, San Francisco, Oakland, San Jose, Sacramento, Elk Grove, Roseville, Folsom, Davis + regions "California Central Valley", "San Francisco Bay Area, California", "Sacramento Region, California" (also on each package Offer).
+
 ## 2b. Gallery update — Oct 7, 2026 (29 new photos)
 
 - Source: 36 masters in `source-photos/wedding-temp-2026-10-07/` (private; gitignored; never in `dist/`).
