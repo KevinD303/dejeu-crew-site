@@ -16,3 +16,4 @@ data/inquiries.json
 *.tgz
 .env
 .env.*
+__pycache__/
