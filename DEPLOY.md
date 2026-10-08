@@ -44,6 +44,8 @@ Service area everywhere is **"California Valley, Bay Area & Sacramento Region"**
 
 **Modesto removed as branding/base (Oct 7, 2026, per Kevin):** "Modesto" no longer appears in any title, meta/OG/Twitter tag, visible copy, alt text, film description or sitemap. Base is phrased as "California’s Central Valley"; hero H1 is _Wedding Photographer & Videographer · California Valley, Bay Area & Sacramento_; About stat **California** / Valley · Bay Area · Sacramento; contact "Serving: California Valley · Bay Area · Sacramento Region"; copyright "Dejeu Crew · California Valley · Bay Area · Sacramento · dejeucrew.com". JSON-LD `address` has no `addressLocality` (CA, US only). The only remaining "Modesto" is the `Modesto, CA` City entry in `areaServed`.
 
+**Navbar (Oct 7, 2026):** removed the duplicate plain "Book" link from the desktop `.nav__links` on both pages — the gold `.nav__cta` "Book" button is the single desktop Book link (carries `aria-current="page"` on book.html); the mobile menu keeps its single "Book" entry.
+
 ## 2b. Gallery update — Oct 7, 2026 (29 new photos)
 
 - Source: 36 masters in `source-photos/wedding-temp-2026-10-07/` (private; gitignored; never in `dist/`).
