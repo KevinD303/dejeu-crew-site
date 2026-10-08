@@ -18,6 +18,8 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 | GitHub Pages + custom domain | ⛔ Pending the repo |
 | GoDaddy DNS | ⏳ Kevin — records in §4 |
 | Inquiry form → email | ✅ Wired to FormSubmit; ⏳ needs one-time activation click (see §5) |
+| Work gallery | ✅ 38 photos (9 original + 29 added Oct 7), "View more" reveal, Weddings/Engagements filters (§2b) |
+| Films section | ✅ 26 s wedding highlight film — ⚠️ **compressed WhatsApp placeholder** (§2c) |
 
 ---
 
@@ -36,6 +38,29 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 - Images: descriptive, wedding-context alt text on hero, all 9 gallery images, About photo, logos. All `<img>` have width/height (logo attrs fixed to their real 16:9 ratio). Gallery/About are `loading="lazy" decoding="async"`; hero is eager + `fetchpriority="high"` + `<link rel="preload" imagesrcset>`.
 - **Responsive images**: new `public/gallery/w900/*.jpg` (900 px wide, progressive, q80, 55–290 KB) with `srcset`/`sizes`, so phones no longer download the 1800 px files (220 KB–1.25 MB). 1800 px originals are unchanged (already ~q85).
 - Small visual fixes: nav monogram now uses a square crop (`logo-monogram-dc-square.png`) instead of squashing the 16:9 PNG; footer lockup no longer stretched (it was being stretched by flexbox).
+
+## 2b. Gallery update — Oct 7, 2026 (29 new photos)
+
+- Source: 36 masters in `source-photos/wedding-temp-2026-10-07/` (private; gitignored; never in `dist/`).
+- **Added 29** → `public/gallery/<name>.jpg` (1800 px wide, progressive q82, EXIF/GPS stripped, ICC kept) + `public/gallery/w900/<name>.jpg` (900 px, q80) with `srcset`/`sizes`, width/height, `loading="lazy"`, `decoding="async"`, descriptive alt text. Grid order is in `public/gallery/MANIFEST.txt`.
+- **Excluded 7** (burst near-duplicates; all were sharp/well exposed): EG0A2141 (≈ EG0A2385 veil-on-staircase), EG0A2436 (≈ EG0A2427/2411 rotunda stairs, less symmetrical), EG0A4691 (bride-solo seated, covered by EG0A4699; kept EG0A4684 from that pair), EG0A4698 (burst of EG0A4699 — 4699 has the better face/light), EG0A4712 + EG0A4715 (same moment as EG0A4716, which has the hand-hold interaction), EG0A9681 (wide proposal set-up, subjects tiny; EG0A9787/9714 show it better).
+- None duplicated the original 9 (different shoots).
+- Proposal/engagement shots (EG0A9714, 9787, 0566, 9857, 0227) are tagged **Engagements** (not Weddings) with a new "Engagements" filter — they're a beach proposal, so labelling them weddings would be inaccurate.
+- Grid: 3-col layout, wide/tall tiles arranged so rows fill with no holes (`grid-auto-flow: dense`; tall tiles now fill both rows). First 12 shown; the other 26 sit behind a **"View more work (26)"** ghost button. All 38 are always in the HTML (crawlable); JS only collapses them, and without JS everything shows. Selecting a filter shows all matches.
+- Sitemap now lists all 38 gallery images.
+- Hero/About/logos/navbar unchanged.
+
+## 2c. Films (wedding videography showcase)
+
+- New `#films` section between Work and Packages: "Cinematic wedding videography", `<video controls playsinline preload="none">` with poster, caption, link to packages; "Films" link in footer.
+- Files (stable names): `public/films/dejeu-crew-wedding-highlight.mp4` (H.264 high, 1024×576, CRF 24, AAC 128k, `+faststart`, 4.7 MB, 26 s) and `public/films/dejeu-crew-wedding-highlight-poster.jpg` (frame at 0.4 s — couple embracing on church steps).
+- **⚠️ Placeholder quality**: made from a WhatsApp-compressed copy (`source-photos/wedding-temp-2026-10-07/wedding-video-whatsapp-2026-10-07.mp4`, 1024×576). Not upscaled. When Kevin sends the full-quality original, run:
+  ```bash
+  scripts/encode-film.sh /path/to/original.mp4 0.4   # caps at 1280 px wide, same output names
+  npm run build
+  ```
+  If the length changes, update `"duration"` (`PT26S`) in the VideoObject JSON-LD in `index.html` and `<video:duration>` in `public/sitemap.xml`.
+- SEO: `VideoObject` JSON-LD (name, description, thumbnailUrl, contentUrl, embedUrl, uploadDate 2026-10-07, duration PT26S, creator/publisher = Dejeu Crew) + a video entry in `sitemap.xml`.
 
 **Book (`book.html`)**: title _Book Wedding Photography & Videography | Dejeu Crew, Modesto CA_, new description, OG/Twitter, icons, BreadcrumbList JSON-LD, keyword lead copy; public "Stripe not connected" wording replaced with "No payment is taken on this site — we'll reply with payment details."
 
@@ -143,6 +168,7 @@ Deposits: no online payment. Reservation requests arrive as emails flagged "Depo
 4. **FormSubmit**: send one test inquiry on the live site and click "Activate Form" in dejeu.crew@gmail.com (§5).
 5. Optional: verify the domain in GitHub Pages settings; add the site to Google Search Console (`https://dejeucrew.com/`, submit `sitemap.xml`) and set up a Google Business Profile for Modesto (big local-SEO win; needs her account).
 6. Still waiting on the 3 extra Google Photos (need a `photos.app.goo.gl` share link or downloaded files).
+7. Send the full-quality original of the wedding highlight film to replace the WhatsApp-compressed placeholder (§2c).
 
 ## 7. Local commands
 ```bash

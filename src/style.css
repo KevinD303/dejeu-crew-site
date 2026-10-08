@@ -1504,3 +1504,69 @@ h3 {
   height: 1px;
   overflow: hidden;
 }
+
+/* ---- Portfolio: fill gaps + "View more" reveal ---- */
+@media (min-width: 960px) {
+  .portfolio { grid-auto-flow: dense; }
+  /* tall tiles fill both spanned rows instead of leaving a gap below */
+  .portfolio__item--tall { aspect-ratio: auto; }
+}
+
+.portfolio.is-collapsed .portfolio__item--more { display: none; }
+
+.portfolio-more {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.portfolio-more__btn[hidden] { display: none; }
+
+.portfolio-more__count {
+  color: var(--muted);
+  margin-left: 0.35em;
+}
+
+/* ---- Films ---- */
+.films {
+  border-top: 1px solid rgba(196, 165, 116, 0.15);
+}
+
+.film {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+.film__frame {
+  position: relative;
+  background: #000;
+  border: 1px solid var(--gold-dim);
+  padding: 0.5rem;
+}
+
+.film__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+}
+
+.film__caption {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.film__title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+}

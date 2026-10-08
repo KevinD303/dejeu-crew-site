@@ -1,20 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://dejeucrew.com/</loc>
     <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0531.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6899.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2411.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4684.jpg</image:loc></image:image>
     <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0559.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4653.jpg</image:loc></image:image>
     <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0450.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6935.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6852.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6880.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0570.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2427.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4934.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2176.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0531.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A9714.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4716.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2272.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4972.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4699.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2385.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A3551.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A9787.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A9173.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6899.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2236.jpg</image:loc></image:image>
     <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6906.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A3703.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4627.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0566.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2603.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4318.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6852.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A4805.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6880.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A9857.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2280.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0570.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A3323-2.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A0227.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2658.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A6935.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2684.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dejeucrew.com/gallery/EG0A9244.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://dejeucrew.com/films/dejeu-crew-wedding-highlight-poster.jpg</video:thumbnail_loc>
+      <video:title>Wedding Highlight Film — Dejeu Crew</video:title>
+      <video:description>A short wedding highlight film by Dejeu Crew, a Modesto wedding videographer: getting-ready details, the church ceremony, a ballroom first dance, and the celebration with family and friends.</video:description>
+      <video:content_loc>https://dejeucrew.com/films/dejeu-crew-wedding-highlight.mp4</video:content_loc>
+      <video:duration>26</video:duration>
+      <video:publication_date>2026-10-07</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
   <url>
     <loc>https://dejeucrew.com/book.html</loc>

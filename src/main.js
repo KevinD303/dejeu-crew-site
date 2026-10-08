@@ -34,13 +34,40 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true })
 onScroll()
 
-/* ---------- Portfolio filters ---------- */
+/* ---------- Portfolio filters + "View more" ---------- */
 const filterBtns = document.querySelectorAll('.filter-btn')
 const items = document.querySelectorAll('.portfolio__item')
+const portfolio = document.querySelector('.portfolio')
+const moreBtn = document.querySelector('.portfolio-more__btn')
+const moreCount = portfolio ? portfolio.querySelectorAll('.portfolio__item--more').length : 0
+let expanded = false
+let activeFilter = 'all'
+
+// All images stay in the HTML (crawlable); JS collapses the extras on load.
+function syncMore() {
+  if (!portfolio || !moreBtn || !moreCount) return
+  const collapse = activeFilter === 'all' && !expanded
+  portfolio.classList.toggle('is-collapsed', collapse)
+  moreBtn.hidden = activeFilter !== 'all'
+  moreBtn.setAttribute('aria-expanded', String(!collapse))
+  moreBtn.innerHTML = collapse
+    ? `View more work <span class="portfolio-more__count">(${moreCount})</span>`
+    : 'Show less'
+}
+
+if (moreBtn) {
+  moreBtn.addEventListener('click', () => {
+    expanded = !expanded
+    syncMore()
+    if (!expanded) document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
+  })
+}
+syncMore()
 
 filterBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     const cat = btn.dataset.filter
+    activeFilter = cat
     filterBtns.forEach((b) => {
       b.classList.toggle('is-active', b === btn)
       b.setAttribute('aria-pressed', String(b === btn))
@@ -49,6 +76,7 @@ filterBtns.forEach((btn) => {
       const match = cat === 'all' || item.dataset.category === cat
       item.classList.toggle('is-hidden', !match)
     })
+    syncMore()
   })
 })
 

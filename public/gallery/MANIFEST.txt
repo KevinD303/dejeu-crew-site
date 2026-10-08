@@ -1,16 +1,47 @@
 Permanent web gallery (dejeucrew.com)
 =====================================
-Path: public/gallery/*.jpg  (served as /gallery/)
-Masters: source-photos/from-zip/Ai website/  (+ Ai-website-1-001.zip)
+Path: public/gallery/*.jpg (1800px wide) + public/gallery/w900/*.jpg (900px, srcset)
+Masters: private, not published.
 
-EG0A0450.jpg  1800×1200  landscape  Bridal Party
-EG0A0531.jpg  1800×2700  portrait   Garden Lift (hero)
-EG0A0559.jpg  1800×2700  portrait   Cheek Kiss
-EG0A0570.jpg  1800×1200  landscape  Hand in Hand
-EG0A6852.jpg  1800×2700  portrait   Almost Kiss
-EG0A6880.jpg  1800×1200  landscape  Through the Veil (OG source)
-EG0A6899.jpg  1800×2700  portrait   Orchard Portrait (about)
-EG0A6906.jpg  1800×2700  portrait   Against the Sky
-EG0A6935.jpg  1800×2700  portrait   The Dip
+38 images in grid order (first 12 visible, rest behind "View more"):
 
-All 9 are wedding selects. OG: public/assets/og-image.jpg (1200×630 from EG0A6880).
+ 1. EG0A2411    1800x2700  tall   weddings    City Hall Vows
+ 2. EG0A4684    1800x2700  normal weddings    Coastal Bluffs
+ 3. EG0A0559    1800x2700  normal weddings    Cheek Kiss
+ 4. EG0A4653    1800x1200  wide   weddings    On the Rocks
+ 5. EG0A0450    1800x1200  wide   weddings    Bridal Party
+ 6. EG0A2427    1800x2699  tall   weddings    Grand Staircase
+ 7. EG0A4934    1800x2700  normal weddings    Windswept
+ 8. EG0A2176    1800x2699  normal weddings    A Quiet Kiss
+ 9. EG0A0531    1800x2700  tall   weddings    Garden Lift
+10. EG0A9714    1800x1200  wide   engagements She Said Yes
+11. EG0A4716    1800x2700  normal weddings    Hold On
+12. EG0A2272    1800x2700  normal weddings    Beaux-Arts Bride
+13. EG0A4972    1800x1200  wide   weddings    Golden Gate
+14. EG0A4699    1800x2700  normal weddings    Sun-Kissed
+15. EG0A2385    1800x2700  tall   weddings    The Train
+16. EG0A3551    1800x2620  normal weddings    In Black & White
+17. EG0A9787    1800x2700  normal engagements Sunset Promise
+18. EG0A9173    1800x1161  wide   weddings    Shoreline Walk
+19. EG0A6899    1800x2700  normal weddings    Orchard Portrait
+20. EG0A2236    1800x2700  normal weddings    Under the Arches
+21. EG0A6906    1800x2700  tall   weddings    Against the Sky
+22. EG0A3703    1800x1200  wide   weddings    Just Married
+23. EG0A4627    1800x2700  normal weddings    Bluff Portrait
+24. EG0A0566    1800x2700  normal engagements Heart Arch
+25. EG0A2603    1800x2594  normal weddings    City Hall Joy
+26. EG0A4318    1800x1200  wide   weddings    Garden Steps
+27. EG0A6852    1800x2700  normal weddings    Almost Kiss
+28. EG0A4805    1800x2700  tall   weddings    Under the Veil
+29. EG0A6880    1800x1200  wide   weddings    Through the Veil
+30. EG0A9857    1800x2700  normal engagements The Ring
+31. EG0A2280    1800x2700  normal weddings    Window Light
+32. EG0A0570    1800x1200  wide   weddings    Hand in Hand
+33. EG0A3323-2  1800x2700  normal weddings    First Dance
+34. EG0A0227    1800x1200  wide   engagements Swept Away
+35. EG0A2658    1800x2700  normal weddings    Ring Details
+36. EG0A6935    1800x2700  normal weddings    The Dip
+37. EG0A2684    1800x2700  normal weddings    Invitation & Rings
+38. EG0A9244    1800x2699  normal weddings    Seaside Embrace
+
+OG: public/assets/og-image.jpg (1200x630 from EG0A6880). Hero: EG0A0531. About: EG0A6899.
