@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dejeucrew.com/sitemap.xml

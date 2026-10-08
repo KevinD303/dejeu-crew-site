@@ -1,0 +1,18 @@
+# deps / build
+node_modules
+dist
+
+# private masters — NEVER publish
+source-photos
+*.zip
+
+# local inquiry log (client data)
+data/inquiries.jsonl
+data/inquiries.json
+
+# misc
+.DS_Store
+*.local
+*.tgz
+.env
+.env.*

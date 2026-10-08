@@ -1,0 +1,16 @@
+Permanent web gallery (dejeucrew.com)
+=====================================
+Path: public/gallery/*.jpg  (served as /gallery/)
+Masters: source-photos/from-zip/Ai website/  (+ Ai-website-1-001.zip)
+
+EG0A0450.jpg  1800×1200  landscape  Bridal Party
+EG0A0531.jpg  1800×2700  portrait   Garden Lift (hero)
+EG0A0559.jpg  1800×2700  portrait   Cheek Kiss
+EG0A0570.jpg  1800×1200  landscape  Hand in Hand
+EG0A6852.jpg  1800×2700  portrait   Almost Kiss
+EG0A6880.jpg  1800×1200  landscape  Through the Veil (OG source)
+EG0A6899.jpg  1800×2700  portrait   Orchard Portrait (about)
+EG0A6906.jpg  1800×2700  portrait   Against the Sky
+EG0A6935.jpg  1800×2700  portrait   The Dip
+
+All 9 are wedding selects. OG: public/assets/og-image.jpg (1200×630 from EG0A6880).
