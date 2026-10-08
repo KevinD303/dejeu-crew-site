@@ -3,7 +3,7 @@
 Minimal, elegant site for **Dejeu Crew** ([dejeucrew.com](https://dejeucrew.com)): gold / brown / black / white brand, home + book flow (inquiry **and** deposit intent).
 
 **Stack:** Vite · vanilla HTML/CSS/JS · no framework  
-**Deploy target:** GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`) → custom domain `dejeucrew.com`. See **DEPLOY.md** for SEO notes, DNS records, form delivery, and what's pending.  
+**Repo:** https://github.com/KevinD303/dejeu-crew-site · **Deploy target:** GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`) → custom domain `dejeucrew.com`. See **DEPLOY.md** for SEO notes, DNS records, form delivery, and what's pending.  
 **Do not** touch GoDaddy, Uplink, or KevinD303/uplink from this project.
 
 ---

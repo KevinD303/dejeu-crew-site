@@ -13,10 +13,9 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 | SEO pass (wedding photo + video, Modesto / Central Valley) | ✅ Done, `npm run build` passes |
 | Box preview | ✅ `http://127.0.0.1:4173/` (box only) |
 | Build tarball | ✅ `/workspace/dejeu-crew-dist.tgz` (contents of `dist/`) |
-| Local git repo | ✅ `/workspace/dejeu-crew` on branch `main`, committed, **not pushed** |
-| GitHub repo `KevinD303/dejeu-crew` | ⛔ **Not created** — no GitHub write access from the box (see §3) |
-| GitHub Pages + custom domain | ⛔ Pending the repo |
-| GoDaddy DNS | ⏳ Kevin — records in §4 |
+| Git repo | ✅ **https://github.com/KevinD303/dejeu-crew-site** (public), `main` pushed from `/workspace/dejeu-crew` |
+| GitHub Pages | ✅ Enabled (source: GitHub Actions), custom domain `dejeucrew.com` set; first deploy run succeeded Oct 7, 2026 10:14 PM PT |
+| GoDaddy DNS | ⏳ **Kevin** — still parked (A → 3.33.130.190 / 15.197.148.33). Site is not reachable until the §4 records are in. |
 | Inquiry form → email | ✅ Wired to FormSubmit; ⏳ needs one-time activation click (see §5) |
 | Work gallery | ✅ 38 photos (9 original + 29 added Oct 7), "View more" reveal, Weddings/Engagements filters (§2b) |
 | Films section | ✅ 2 films from full-quality originals: church wedding highlight + forest/lakeside couple's film (§2c) |
@@ -80,28 +79,15 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 - Vite `base` is `/` (correct for `dejeucrew.com`).
 - Local repo committed on `main` in `/workspace/dejeu-crew`.
 
-### Why it isn't live yet (blocker)
-- `gh auth status` → **not logged in** on the box. No Netlify/Vercel/Wrangler CLIs or deploy tokens in the environment.
-- The Cursor GitHub connector sees `KevinD303` but has **no create-repository, push, or Pages tools**; `KevinD303/dejeu-crew` doesn't exist / isn't visible.
-- So the repo can't be created or pushed from here without Kevin logging in.
-
-### Steps (≈5 min) — either Kevin, or the box after `gh auth login`
-```bash
-# on the box
-gh auth login                      # GitHub.com → HTTPS → login with browser (KevinD303)
-cd /workspace/dejeu-crew
-gh repo create KevinD303/dejeu-crew --public --source . --remote origin --push
-# enable Pages with GitHub Actions as the source
-gh api -X POST repos/KevinD303/dejeu-crew/pages -f build_type=workflow
-# set the custom domain
-gh api -X PUT repos/KevinD303/dejeu-crew/pages -f cname=dejeucrew.com
-# watch the deploy
-gh run watch --repo KevinD303/dejeu-crew
-```
-Or in the browser: create public repo `dejeu-crew` (empty) → push → **Settings → Pages → Source: GitHub Actions** → **Custom domain: `dejeucrew.com`** → Save.
+### Published — Oct 7, 2026 (PT)
+- Repo: **https://github.com/KevinD303/dejeu-crew-site** (public). The planned name `dejeu-crew` was taken: Kevin already has a **private 2022 repo `KevinD303/Dejeu-Crew`** (old PHP/Docker site; GitHub names are case-insensitive). It was **not touched**; the new site lives in `dejeu-crew-site`.
+- History checked before pushing: no `source-photos/`, zips, video masters, WhatsApp-derived files, `.tgz`, `.env` or inquiry logs in any commit (the earlier WhatsApp-derived film was stripped from the unpushed local history). Largest file ≈ 11 MB.
+- Pages: source = GitHub Actions, custom domain `dejeucrew.com` (API: `cname: dejeucrew.com`).
+- Actions: "Deploy to GitHub Pages" — every push to `main` builds and deploys (first run 37731327609 ✅ success). Runs: https://github.com/KevinD303/dejeu-crew-site/actions
+- Update flow from the box: `cd /workspace/dejeu-crew && git add -A && git commit -m "…" && git push` (gh is logged in as KevinD303).
 
 ### Default Pages URL note
-Before the custom domain is set, the site would be at `https://kevind303.github.io/dejeu-crew/`. Because the build uses base `/` (right for dejeucrew.com), CSS/images **will look broken at that sub-path URL** — that's expected. Once the custom domain is saved, `kevind303.github.io/dejeu-crew/` redirects to `https://dejeucrew.com/`. Don't change `base` to `/dejeu-crew/`.
+The default URL `https://kevind303.github.io/dejeu-crew-site/` now 301-redirects to `http://dejeucrew.com/` (custom domain is set), so **until GoDaddy DNS is switched the site isn't reachable anywhere public**. Because the build uses base `/` (right for dejeucrew.com), CSS/images **will look broken at that sub-path URL** — that's expected. Don't change Vite `base` to `/dejeu-crew-site/`.
 
 Recommended: verify the domain under **GitHub → Settings (account) → Pages → Add a domain** (adds a TXT record) to prevent domain takeover.
 
@@ -112,9 +98,9 @@ Recommended: verify the domain under **GitHub → Settings (account) → Pages �
 Values verified against GitHub Docs ("Managing a custom domain for your GitHub Pages site"), Oct 7, 2026.
 
 **Remove first**
-- The default **parked** `A` record for `@` (GoDaddy "Parked" / `Websitebuilder` / any other IP).
+- The current **parked** `A` records for `@` — as of Oct 7, 2026 they are **3.33.130.190** and **15.197.148.33** (GoDaddy parking/forwarding).
 - Any **Domain Forwarding** on dejeucrew.com (GoDaddy → Domain → Forwarding → delete).
-- Any existing `CNAME` for `www` (often points to `@`).
+- The existing `CNAME` for `www` (currently `www → dejeucrew.com` / `@`) — replace it with the one below.
 - Leave **MX / TXT / NS** alone (email and verification).
 
 **Add**
@@ -165,7 +151,7 @@ Deposits: no online payment. Reservation requests arrive as emails flagged "Depo
 
 ## 6. Pending on Kevin
 
-1. **GitHub**: run `gh auth login` on the box (or create the empty public repo `KevinD303/dejeu-crew` yourself) so the repo can be pushed and Pages turned on (§3).
+1. ~~GitHub repo + Pages~~ ✅ done (`KevinD303/dejeu-crew-site`). Optional: archive/rename the old private `KevinD303/Dejeu-Crew` repo if it's no longer needed.
 2. **GoDaddy DNS**: remove parked A record + forwarding; add the 4 A records + `www` CNAME (§4).
 3. **HTTPS**: tick "Enforce HTTPS" in Pages settings once available.
 4. **FormSubmit**: send one test inquiry on the live site and click "Activate Form" in dejeu.crew@gmail.com (§5).
