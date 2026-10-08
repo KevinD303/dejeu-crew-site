@@ -215,7 +215,7 @@ h3 {
 
 .nav__wordmark {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -229,7 +229,7 @@ h3 {
 }
 
 .nav__links a {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -262,7 +262,7 @@ h3 {
 
 .nav__cta {
   display: none;
-  font-size: 0.7rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -434,7 +434,7 @@ h3 {
 
 /* Script wordmark (logo-script branch): transparent gold calligraphy, no DC monogram */
 .hero__lockup--script {
-  width: min(19rem, 66vw);
+  width: min(34rem, 88vw);
   margin-bottom: 1.25rem;
   filter: drop-shadow(0 1px 6px rgba(10, 10, 10, 0.75)) drop-shadow(0 0 28px rgba(10, 10, 10, 0.55));
 }
