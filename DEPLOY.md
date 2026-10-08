@@ -10,7 +10,7 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 
 | Item | Status |
 |------|--------|
-| SEO pass (wedding photo + video, Modesto / Central Valley) | ✅ Done, `npm run build` passes |
+| SEO pass (wedding photo + video, California Valley / Bay Area / Sacramento) | ✅ Done, `npm run build` passes |
 | Box preview | ✅ `http://127.0.0.1:4173/` (box only) |
 | Build tarball | ✅ `/workspace/dejeu-crew-dist.tgz` (contents of `dist/`) |
 | Git repo | ✅ **https://github.com/KevinD303/dejeu-crew-site** (public), `main` pushed from `/workspace/dejeu-crew` |
@@ -25,22 +25,24 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 ## 2. SEO changes
 
 **Home (`index.html`)**
-- `<title>`: _Modesto Wedding Photographer & Videographer | Dejeu Crew_ (56 chars).
-- Meta description (≈158 chars): Modesto wedding photography + cinematic wedding videography, weddings and engagement sessions across the Central Valley.
+- `<title>`: _Wedding Photographer & Videographer | California Valley & Bay Area_ (66 chars; Sacramento is in the description — adding it or the brand would push past ~65).
+- Meta description: Dejeu Crew — wedding photographer & cinematic wedding videographer serving the California Valley, Bay Area & Sacramento region.
 - `robots` meta (`index, follow, max-image-preview:large`), canonical `https://dejeucrew.com/`, `theme-color #0A0A0A`.
 - Open Graph + Twitter cards: wedding-focused title/description, `og:locale`, `og:image` (`/assets/og-image.jpg`, 1200×630) with width/height/alt.
 - Icons: `favicon.ico` (16/32/48), `favicon.svg` (kept), `favicon-32.png`, `apple-touch-icon.png` (180), `icon-192/512.png`, `site.webmanifest` — all cut from the DC monogram.
-- **Single H1**: the hero eyebrow is now the H1 — _"Wedding Photographer & Videographer · Modesto, CA"_ — styled exactly like the old eyebrow. The tagline _"Stories told in light & stillness"_ is now a `<p class="display hero__title">` with the same look/animation. Heading order is H1 → H2 (sections) → H3 (cards/FAQ); footer column labels are no longer `<h4>`.
-- New visible copy (same tone/palette): hero lead, Services intro, a 3-up **offerings** row (Wedding Photography / Wedding Videography & Cinematography / Engagement Sessions), package card labels ("Wedding Videography", "Wedding Photography", "10hr Wedding Film" …), About copy (photographs **and films** weddings, based in Modesto), Contact "Based in Modesto, CA · Serving the Central Valley", footer tagline.
-- New **FAQ section** (`#faq`, `<details>` accordion) — 7 questions built only from known facts: booking (inquiry → deposit; amount confirmed on reply), photo + video offered, photo count (min 200 on the 8-hr photo package), coverage hours (8/10; engagement 1 hr), engagement sessions ($500/1 hr), where based / travel (Modesto; Central Valley incl. Stockton, Turlock, Manteca, Merced, Sacramento area; other venues confirmed on inquiry), prices are starting rates. No turnaround times or travel fees invented. FAQ link added to mobile menu + footer (desktop navbar untouched).
-- **JSON-LD** (`@graph`): `WebSite`; `ProfessionalService`/`LocalBusiness` (name, url, logo, images, phone, email, Modesto CA address w/o street, areaServed = Modesto/Stockton/Turlock/Manteca/Merced/Sacramento + Central Valley, `sameAs` Instagram, `priceRange $500–$3,000`, `knowsAbout`, contactPoint, `OfferCatalog` with 5 Offers → Service: Video 10 hr $3,000, Video 8 hr $2,500, Photo 8 hr min 200 photos $2,500, Photo 10 hr $3,000, Engagement 1 hr $500, all as starting prices); `FAQPage` mirroring the visible FAQ text word-for-word.
+- **Single H1**: the hero eyebrow is now the H1 — _"Wedding Photographer & Videographer · California Valley, Bay Area & Sacramento"_ — styled exactly like the old eyebrow. The tagline _"Stories told in light & stillness"_ is now a `<p class="display hero__title">` with the same look/animation. Heading order is H1 → H2 (sections) → H3 (cards/FAQ); footer column labels are no longer `<h4>`.
+- New visible copy (same tone/palette): hero lead, Services intro, a 3-up **offerings** row (Wedding Photography / Wedding Videography & Cinematography / Engagement Sessions), package card labels ("Wedding Videography", "Wedding Photography", "10hr Wedding Film" …), About copy (photographs **and films** weddings, based in California’s Central Valley), Contact "Serving: California Valley · Bay Area · Sacramento Region", footer tagline.
+- New **FAQ section** (`#faq`, `<details>` accordion) — 7 questions built only from known facts: booking (inquiry → deposit; amount confirmed on reply), photo + video offered, photo count (min 200 on the 8-hr photo package), coverage hours (8/10; engagement 1 hr), engagement sessions ($500/1 hr), where based / travel (California’s Central Valley; California Valley, Bay Area & Sacramento region incl. Stockton, Turlock, Manteca, Merced, San Francisco, Sacramento; other venues confirmed on inquiry), prices are starting rates. No turnaround times or travel fees invented. FAQ link added to mobile menu + footer (desktop navbar untouched).
+- **JSON-LD** (`@graph`): `WebSite`; `ProfessionalService`/`LocalBusiness` (name, url, logo, images, phone, email, address = addressRegion CA + country US only (no locality), areaServed = see §2a, `sameAs` Instagram, `priceRange $500–$3,000`, `knowsAbout`, contactPoint, `OfferCatalog` with 5 Offers → Service: Video 10 hr $3,000, Video 8 hr $2,500, Photo 8 hr min 200 photos $2,500, Photo 10 hr $3,000, Engagement 1 hr $500, all as starting prices); `FAQPage` mirroring the visible FAQ text word-for-word.
 - Images: descriptive, wedding-context alt text on hero, all 9 gallery images, About photo, logos. All `<img>` have width/height (logo attrs fixed to their real 16:9 ratio). Gallery/About are `loading="lazy" decoding="async"`; hero is eager + `fetchpriority="high"` + `<link rel="preload" imagesrcset>`.
 - **Responsive images**: new `public/gallery/w900/*.jpg` (900 px wide, progressive, q80, 55–290 KB) with `srcset`/`sizes`, so phones no longer download the 1800 px files (220 KB–1.25 MB). 1800 px originals are unchanged (already ~q85).
 - Small visual fixes: nav monogram now uses a square crop (`logo-monogram-dc-square.png`) instead of squashing the 16:9 PNG; footer lockup no longer stretched (it was being stretched by flexbox).
 
 ## 2a. Service-area wording (Kevin, Oct 7, 2026)
 
-Service area everywhere is **"California Valley, Bay Area & Sacramento Region"**: home + book meta descriptions and OG/Twitter descriptions, hero lead, Services intro, About ("California Valley wedding photographer", "California Valley home"), FAQ travel answer (visible + JSON-LD, kept identical), Contact, and both footers. `<title>`s unchanged (adding all three regions would push them past ~60 chars). JSON-LD `areaServed`: Modesto, Stockton, Turlock, Manteca, Merced, Tracy, San Francisco, Oakland, San Jose, Sacramento, Elk Grove, Roseville, Folsom, Davis + regions "California Central Valley", "San Francisco Bay Area, California", "Sacramento Region, California" (also on each package Offer).
+Service area everywhere is **"California Valley, Bay Area & Sacramento Region"**: home + book meta descriptions and OG/Twitter descriptions, hero lead, Services intro, About ("California Valley wedding photographer"), FAQ travel answer (visible + JSON-LD, kept identical), Contact, and both footers. Titles: see below. JSON-LD `areaServed` (the only place "Modesto" remains, as one city among many): Modesto, Stockton, Turlock, Manteca, Merced, Tracy, San Francisco, Oakland, San Jose, Sacramento, Elk Grove, Roseville, Folsom, Davis + regions "California Central Valley", "San Francisco Bay Area, California", "Sacramento Region, California" (also on each package Offer).
+
+**Modesto removed as branding/base (Oct 7, 2026, per Kevin):** "Modesto" no longer appears in any title, meta/OG/Twitter tag, visible copy, alt text, film description or sitemap. Base is phrased as "California’s Central Valley"; hero H1 is _Wedding Photographer & Videographer · California Valley, Bay Area & Sacramento_; About stat **California** / Valley · Bay Area · Sacramento; contact "Serving: California Valley · Bay Area · Sacramento Region"; copyright "Dejeu Crew · California Valley · Bay Area · Sacramento · dejeucrew.com". JSON-LD `address` has no `addressLocality` (CA, US only). The only remaining "Modesto" is the `Modesto, CA` City entry in `areaServed`.
 
 ## 2b. Gallery update — Oct 7, 2026 (29 new photos)
 
@@ -69,7 +71,7 @@ Service area everywhere is **"California Valley, Bay Area & Sacramento Region"**
 - SEO: three `VideoObject`s in the home JSON-LD (PT26S / PT27S / PT40S, uploadDate 2026-10-07, contentUrl = largest file, thumbnail = poster) and three `<video:video>` entries in `sitemap.xml`.
 - Re-encode / replace: `scripts/encode-film.sh <master> <slug> <poster-seconds> [crf1080] [crf720]` keeps the same file names; sources under 1080p get 720p only (no upscaling). Update durations in JSON-LD + sitemap if a film's length changes.
 
-**Book (`book.html`)**: title _Book Wedding Photography & Videography | Dejeu Crew, Modesto CA_, new description, OG/Twitter, icons, BreadcrumbList JSON-LD, keyword lead copy; public "Stripe not connected" wording replaced with "No payment is taken on this site — we'll reply with payment details."
+**Book (`book.html`)**: title _Book Wedding Photography & Videography | Dejeu Crew_, new description, OG/Twitter, icons, BreadcrumbList JSON-LD, keyword lead copy; public "Stripe not connected" wording replaced with "No payment is taken on this site — we'll reply with payment details."
 
 **Site files**: `public/robots.txt` (allow all + sitemap), `public/sitemap.xml` (`/` with 9 image entries, `/book.html`), `public/CNAME` (`dejeucrew.com`), `.gitignore` (node_modules, dist, source-photos, *.zip, *.tgz, inquiry log, .env).
 
@@ -161,7 +163,7 @@ Deposits: no online payment. Reservation requests arrive as emails flagged "Depo
 2. **GoDaddy DNS**: remove parked A record + forwarding; add the 4 A records + `www` CNAME (§4).
 3. **HTTPS**: tick "Enforce HTTPS" in Pages settings once available.
 4. **FormSubmit**: send one test inquiry on the live site and click "Activate Form" in dejeu.crew@gmail.com (§5).
-5. Optional: verify the domain in GitHub Pages settings; add the site to Google Search Console (`https://dejeucrew.com/`, submit `sitemap.xml`) and set up a Google Business Profile for Modesto (big local-SEO win; needs her account).
+5. Optional: verify the domain in GitHub Pages settings; add the site to Google Search Console (`https://dejeucrew.com/`, submit `sitemap.xml`) and set up a Google Business Profile as a service-area business (California Valley / Bay Area / Sacramento; big local-SEO win; needs her account).
 6. Still waiting on the 3 extra Google Photos (need a `photos.app.goo.gl` share link or downloaded files).
 
 ## 7. Local commands
