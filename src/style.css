@@ -1532,9 +1532,22 @@ h3 {
   border-top: 1px solid rgba(196, 165, 116, 0.15);
 }
 
-.film {
-  max-width: 60rem;
+.films__grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 3rem);
+  max-width: 72rem;
   margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .films__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.film {
+  margin: 0;
 }
 
 .film__frame {

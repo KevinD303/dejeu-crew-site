@@ -46,11 +46,20 @@
     <image:image><image:loc>https://dejeucrew.com/gallery/EG0A2684.jpg</image:loc></image:image>
     <image:image><image:loc>https://dejeucrew.com/gallery/EG0A9244.jpg</image:loc></image:image>
     <video:video>
-      <video:thumbnail_loc>https://dejeucrew.com/films/dejeu-crew-wedding-highlight-poster.jpg</video:thumbnail_loc>
-      <video:title>Wedding Highlight Film — Dejeu Crew</video:title>
-      <video:description>A short wedding highlight film by Dejeu Crew, a Modesto wedding videographer: getting-ready details, the church ceremony, a ballroom first dance, and the celebration with family and friends.</video:description>
-      <video:content_loc>https://dejeucrew.com/films/dejeu-crew-wedding-highlight.mp4</video:content_loc>
+      <video:thumbnail_loc>https://dejeucrew.com/films/dejeu-crew-church-wedding-film-poster.jpg</video:thumbnail_loc>
+      <video:title>Church Wedding — Highlight Film | Dejeu Crew</video:title>
+      <video:description>A wedding highlight film by Dejeu Crew, Modesto wedding videographer: getting-ready details, the church ceremony, a ballroom first dance, and the couple on the church steps.</video:description>
+      <video:content_loc>https://dejeucrew.com/films/dejeu-crew-church-wedding-film-1080.mp4</video:content_loc>
       <video:duration>26</video:duration>
+      <video:publication_date>2026-10-07</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://dejeucrew.com/films/dejeu-crew-forest-lakeside-film-poster.jpg</video:thumbnail_loc>
+      <video:title>Forest &amp; Lakeside — Couple’s Film | Dejeu Crew</video:title>
+      <video:description>A cinematic couple’s film by Dejeu Crew: tall grass and pine forest, a bouquet by the lake, and a golden-hour walk down a gravel path.</video:description>
+      <video:content_loc>https://dejeucrew.com/films/dejeu-crew-forest-lakeside-film-1080.mp4</video:content_loc>
+      <video:duration>27</video:duration>
       <video:publication_date>2026-10-07</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>

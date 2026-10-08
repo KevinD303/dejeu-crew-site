@@ -344,18 +344,41 @@
           },
           {
             "@type": "VideoObject",
-            "@id": "https://dejeucrew.com/#wedding-highlight-film",
-            "name": "Wedding Highlight Film — Dejeu Crew",
-            "description": "A short wedding highlight film by Dejeu Crew, a Modesto wedding videographer: getting-ready details, the church ceremony, a ballroom first dance, and the celebration with family and friends.",
+            "@id": "https://dejeucrew.com/#church-wedding-film",
+            "name": "Church Wedding — Highlight Film | Dejeu Crew",
+            "description": "A wedding highlight film by Dejeu Crew, Modesto wedding videographer: getting-ready details, the church ceremony, a ballroom first dance, the groomsmen’s celebration, and the couple on the church steps.",
             "thumbnailUrl": [
-              "https://dejeucrew.com/films/dejeu-crew-wedding-highlight-poster.jpg"
+              "https://dejeucrew.com/films/dejeu-crew-church-wedding-film-poster.jpg"
             ],
-            "contentUrl": "https://dejeucrew.com/films/dejeu-crew-wedding-highlight.mp4",
+            "contentUrl": "https://dejeucrew.com/films/dejeu-crew-church-wedding-film-1080.mp4",
             "embedUrl": "https://dejeucrew.com/#films",
             "uploadDate": "2026-10-07",
             "duration": "PT26S",
-            "width": 1024,
-            "height": 576,
+            "width": 1920,
+            "height": 1080,
+            "inLanguage": "en-US",
+            "isFamilyFriendly": true,
+            "creator": {
+              "@id": "https://dejeucrew.com/#business"
+            },
+            "publisher": {
+              "@id": "https://dejeucrew.com/#business"
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "@id": "https://dejeucrew.com/#forest-lakeside-film",
+            "name": "Forest & Lakeside — Couple’s Film | Dejeu Crew",
+            "description": "A cinematic couple’s film by Dejeu Crew: tall grass and pine forest, a bouquet by the lake, and a golden-hour walk down a gravel path.",
+            "thumbnailUrl": [
+              "https://dejeucrew.com/films/dejeu-crew-forest-lakeside-film-poster.jpg"
+            ],
+            "contentUrl": "https://dejeucrew.com/films/dejeu-crew-forest-lakeside-film-1080.mp4",
+            "embedUrl": "https://dejeucrew.com/#films",
+            "uploadDate": "2026-10-07",
+            "duration": "PT27S",
+            "width": 1920,
+            "height": 1080,
             "inLanguage": "en-US",
             "isFamilyFriendly": true,
             "creator": {
@@ -1228,30 +1251,57 @@
             </p>
           </header>
 
-          <figure class="film reveal">
-            <div class="film__frame">
-              <video
-                class="film__video"
-                controls
-                playsinline
-                preload="none"
-                poster="/films/dejeu-crew-wedding-highlight-poster.jpg"
-                width="1024"
-                height="576"
-                aria-describedby="film-caption"
-              >
-                <source src="/films/dejeu-crew-wedding-highlight.mp4" type="video/mp4" />
-                Your browser can’t play this video.
-                <a href="/films/dejeu-crew-wedding-highlight.mp4">Download the wedding highlight film</a>.
-              </video>
-            </div>
-            <figcaption class="film__caption" id="film-caption">
-              <span class="film__title">Wedding Highlight Film</span>
-              A short wedding highlight film: getting-ready details, the church
-              ceremony, a ballroom first dance, and the celebration with family
-              and friends. Sound on.
-            </figcaption>
-          </figure>
+          <div class="films__grid reveal">
+            <figure class="film">
+              <div class="film__frame">
+                <video
+                  class="film__video"
+                  controls
+                  playsinline
+                  preload="none"
+                  poster="/films/dejeu-crew-church-wedding-film-poster.jpg"
+                  width="1920"
+                  height="1080"
+                  aria-describedby="film-church-caption"
+                  aria-label="Church wedding highlight film by Dejeu Crew"
+                >
+                  <source src="/films/dejeu-crew-church-wedding-film-720.mp4" type="video/mp4" media="(max-width: 900px)" />
+                  <source src="/films/dejeu-crew-church-wedding-film-1080.mp4" type="video/mp4" />
+                  Your browser can’t play this video.
+                  <a href="/films/dejeu-crew-church-wedding-film-1080.mp4">Download the film</a>.
+                </video>
+              </div>
+              <figcaption class="film__caption" id="film-church-caption">
+                <span class="film__title">Church Wedding — Highlight Film</span>
+                Getting-ready details, the church ceremony, a ballroom first dance, the groomsmen’s celebration, and a last moment together on the church steps.
+              </figcaption>
+            </figure>
+
+            <figure class="film">
+              <div class="film__frame">
+                <video
+                  class="film__video"
+                  controls
+                  playsinline
+                  preload="none"
+                  poster="/films/dejeu-crew-forest-lakeside-film-poster.jpg"
+                  width="1920"
+                  height="1080"
+                  aria-describedby="film-forest-caption"
+                  aria-label="Forest and lakeside couple’s film by Dejeu Crew"
+                >
+                  <source src="/films/dejeu-crew-forest-lakeside-film-720.mp4" type="video/mp4" media="(max-width: 900px)" />
+                  <source src="/films/dejeu-crew-forest-lakeside-film-1080.mp4" type="video/mp4" />
+                  Your browser can’t play this video.
+                  <a href="/films/dejeu-crew-forest-lakeside-film-1080.mp4">Download the film</a>.
+                </video>
+              </div>
+              <figcaption class="film__caption" id="film-forest-caption">
+                <span class="film__title">Forest &amp; Lakeside — Couple’s Film</span>
+                Tall grass and pine forest, a bouquet by the lake, and a golden-hour walk down a gravel path — a quiet, cinematic couple’s film.
+              </figcaption>
+            </figure>
+          </div>
 
           <p class="packages-note reveal">
             Wedding videography packages start at $2,500 for 8 hours.

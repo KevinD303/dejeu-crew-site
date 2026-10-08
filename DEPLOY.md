@@ -19,7 +19,7 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 | GoDaddy DNS | ⏳ Kevin — records in §4 |
 | Inquiry form → email | ✅ Wired to FormSubmit; ⏳ needs one-time activation click (see §5) |
 | Work gallery | ✅ 38 photos (9 original + 29 added Oct 7), "View more" reveal, Weddings/Engagements filters (§2b) |
-| Films section | ✅ 26 s wedding highlight film — ⚠️ **compressed WhatsApp placeholder** (§2c) |
+| Films section | ✅ 2 films from full-quality originals: church wedding highlight + forest/lakeside couple's film (§2c) |
 
 ---
 
@@ -52,15 +52,18 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 
 ## 2c. Films (wedding videography showcase)
 
-- New `#films` section between Work and Packages: "Cinematic wedding videography", `<video controls playsinline preload="none">` with poster, caption, link to packages; "Films" link in footer.
-- Files (stable names): `public/films/dejeu-crew-wedding-highlight.mp4` (H.264 high, 1024×576, CRF 24, AAC 128k, `+faststart`, 4.7 MB, 26 s) and `public/films/dejeu-crew-wedding-highlight-poster.jpg` (frame at 0.4 s — couple embracing on church steps).
-- **⚠️ Placeholder quality**: made from a WhatsApp-compressed copy (`source-photos/wedding-temp-2026-10-07/wedding-video-whatsapp-2026-10-07.mp4`, 1024×576). Not upscaled. When Kevin sends the full-quality original, run:
-  ```bash
-  scripts/encode-film.sh /path/to/original.mp4 0.4   # caps at 1280 px wide, same output names
-  npm run build
-  ```
-  If the length changes, update `"duration"` (`PT26S`) in the VideoObject JSON-LD in `index.html` and `<video:duration>` in `public/sitemap.xml`.
-- SEO: `VideoObject` JSON-LD (name, description, thumbnailUrl, contentUrl, embedUrl, uploadDate 2026-10-07, duration PT26S, creator/publisher = Dejeu Crew) + a video entry in `sitemap.xml`.
+- `#films` section between Work and Packages: "Cinematic wedding videography" — two films side by side on desktop (≥900 px), stacked on mobile; footer has a "Films" link.
+- Both encoded from Kevin's full-quality originals (1920×1080, 59.94 fps, ~38 Mbps; masters stay private in `source-photos/`, never in git or `dist/`):
+
+| Film | Master | 1080p | 720p | Poster |
+|------|--------|-------|------|--------|
+| Church Wedding — Highlight Film (26 s) | EG0A4085_2.mp4 | 11.1 MB (CRF 26) | 7.6 MB (CRF 24) | 1.3 s — couple embracing on the church steps, bride smiling to camera |
+| Forest & Lakeside — Couple's Film (27 s) | EG0A5361.mp4 | 10.2 MB (CRF 25) | 6.1 MB (CRF 24) | 11.3 s — bride smiling over the groom's shoulder, bouquet, lake + golden light |
+
+  Files: `public/films/dejeu-crew-church-wedding-film-{1080,720}.mp4` + `-poster.jpg`, `public/films/dejeu-crew-forest-lakeside-film-{1080,720}.mp4` + `-poster.jpg`.
+- Encoding: H.264 high, 29.97 fps, AAC 128k stereo, `+faststart`. `<video controls playsinline preload="none" poster=…>`; screens ≤900 px get the 720p `<source media>`, others 1080p. Nothing downloads until play is pressed.
+- SEO: two `VideoObject`s in the home JSON-LD (PT26S / PT27S, uploadDate 2026-10-07, contentUrl = 1080p file, thumbnail = poster) and two `<video:video>` entries in `sitemap.xml`.
+- Re-encode / replace: `scripts/encode-film.sh <master> <slug> <poster-seconds> [crf1080] [crf720]` keeps the same file names. Update durations in JSON-LD + sitemap if a film's length changes.
 
 **Book (`book.html`)**: title _Book Wedding Photography & Videography | Dejeu Crew, Modesto CA_, new description, OG/Twitter, icons, BreadcrumbList JSON-LD, keyword lead copy; public "Stripe not connected" wording replaced with "No payment is taken on this site — we'll reply with payment details."
 
@@ -168,7 +171,6 @@ Deposits: no online payment. Reservation requests arrive as emails flagged "Depo
 4. **FormSubmit**: send one test inquiry on the live site and click "Activate Form" in dejeu.crew@gmail.com (§5).
 5. Optional: verify the domain in GitHub Pages settings; add the site to Google Search Console (`https://dejeucrew.com/`, submit `sitemap.xml`) and set up a Google Business Profile for Modesto (big local-SEO win; needs her account).
 6. Still waiting on the 3 extra Google Photos (need a `photos.app.goo.gl` share link or downloaded files).
-7. Send the full-quality original of the wedding highlight film to replace the WhatsApp-compressed placeholder (§2c).
 
 ## 7. Local commands
 ```bash
