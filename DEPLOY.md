@@ -46,6 +46,17 @@ Service area everywhere is **"California Valley, Bay Area & Sacramento Region"**
 
 **Navbar (Oct 7, 2026):** removed the duplicate plain "Book" link from the desktop `.nav__links` on both pages — the gold `.nav__cta` "Book" button is the single desktop Book link (carries `aria-current="page"` on book.html); the mobile menu keeps its single "Book" entry.
 
+## 2a-logo. Hero script wordmark — branch `logo-script` (LOCAL ONLY, not pushed; Kevin picks first)
+
+- Hero lockup no longer uses the DC monogram PNG; DC stays only in the navbar + favicon. The footer lockup on both pages also switched to the script wordmark (it contained DC too).
+- "Dejeu" on top, "Crew" set lower, hanging off the j's descender; gold gradient (#DCC293 → #C4A574 → #A8864F) on transparent, real font outlines converted to SVG paths (no webfont load).
+  - **A** `public/assets/logo-script-a.svg` — Great Vibes (SIL OFL), clean, j tail flows into Crew. **Wired in / recommended.**
+  - **B** `logo-script-b.svg` — Pinyon Script (SIL OFL) + tapered J-tail swash under Crew.
+  - **C** `logo-script-c.svg` — Parisienne (SIL OFL) + J-tail swash.
+- To switch: change `src` of `.hero__lockup` and `.footer__script` in index.html/book.html. Regenerate with `scripts/logo-script/build.py` (uharfbuzz + fonttools).
+- Comparison: `/workspace/dejeu-logo-script-options.jpg`; hero shots `/workspace/dejeu-hero-script-{desktop,mobile}.png` (box).
+- To ship: `git checkout main && git merge logo-script && git push`.
+
 ## 2b. Gallery update — Oct 7, 2026 (29 new photos)
 
 - Source: 36 masters in `source-photos/wedding-temp-2026-10-07/` (private; gitignored; never in `dist/`).
