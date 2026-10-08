@@ -459,6 +459,246 @@ if (form) {
   })
 }
 
+/* ---------- Gallery lightbox ----------
+ * Click / Enter / Space on any Work photo opens it full-size (1800px).
+ * Arrows (buttons, ←/→ keys, swipe) step through the photos currently
+ * shown by the filter (incl. collapsed "View more" ones) and wrap around.
+ * Esc, the X, or tapping the backdrop closes and restores focus.
+ */
+const galleryItems = Array.from(document.querySelectorAll('.portfolio__item')).filter((item) =>
+  item.querySelector('.portfolio__img')
+)
+
+if (galleryItems.length) {
+  const chevron = (dir) =>
+    `<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false"><path d="${
+      dir === 'prev' ? 'M15 4 7 12l8 8' : 'M9 4l8 8-8 8'
+    }" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+
+  const lb = document.createElement('div')
+  lb.className = 'lightbox'
+  lb.setAttribute('role', 'dialog')
+  lb.setAttribute('aria-modal', 'true')
+  lb.setAttribute('aria-label', 'Photo viewer')
+  lb.hidden = true
+  lb.innerHTML = `
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" alt="" decoding="async" />
+      <figcaption class="lightbox__caption"></figcaption>
+    </figure>
+    <p class="lightbox__counter" aria-live="polite"></p>
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Close photo viewer">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox__btn lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photo">${chevron('prev')}</button>
+    <button class="lightbox__btn lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo">${chevron('next')}</button>
+  `
+  document.body.appendChild(lb)
+
+  const lbImg = lb.querySelector('.lightbox__img')
+  const lbCaption = lb.querySelector('.lightbox__caption')
+  const lbCounter = lb.querySelector('.lightbox__counter')
+  const lbClose = lb.querySelector('.lightbox__close')
+  const lbPrev = lb.querySelector('.lightbox__nav--prev')
+  const lbNext = lb.querySelector('.lightbox__nav--next')
+
+  let set = []
+  let index = 0
+  let opener = null
+  let swapTimer = 0
+  let closeTimer = 0
+  const preloaded = new Set()
+
+  const fullSrc = (item) => item.querySelector('.portfolio__img').getAttribute('src')
+
+  function preload(item) {
+    const src = fullSrc(item)
+    if (preloaded.has(src)) return
+    preloaded.add(src)
+    const im = new Image()
+    im.decoding = 'async'
+    im.src = src
+  }
+
+  function render(animate) {
+    const item = set[index]
+    const thumb = item.querySelector('.portfolio__img')
+    const src = fullSrc(item)
+    const title = item.querySelector('.portfolio__caption h3')?.textContent.trim() || ''
+    const sub = item.querySelector('.portfolio__caption p')?.textContent.trim() || ''
+
+    const apply = () => {
+      lbImg.classList.add('is-loading')
+      lbImg.onload = lbImg.onerror = () => lbImg.classList.remove('is-loading')
+      lbImg.src = src
+      lbImg.alt = thumb.alt || ''
+      if (lbImg.complete && lbImg.naturalWidth) lbImg.classList.remove('is-loading')
+      lbCaption.innerHTML = title
+        ? `<span class="lightbox__title"></span>${sub ? '<span class="lightbox__sub"></span>' : ''}`
+        : ''
+      if (title) lbCaption.querySelector('.lightbox__title').textContent = title
+      if (sub) lbCaption.querySelector('.lightbox__sub').textContent = sub
+    }
+
+    clearTimeout(swapTimer)
+    if (animate) {
+      lbImg.classList.add('is-loading')
+      swapTimer = setTimeout(apply, 160)
+    } else {
+      apply()
+    }
+
+    lbCounter.textContent = `${index + 1} / ${set.length}`
+    const single = set.length < 2
+    lbPrev.hidden = single
+    lbNext.hidden = single
+    if (!single) {
+      preload(set[(index + 1) % set.length])
+      preload(set[(index - 1 + set.length) % set.length])
+    }
+  }
+
+  function step(delta) {
+    if (lb.hidden || set.length < 2) return
+    index = (index + delta + set.length) % set.length
+    render(true)
+  }
+
+  function open(item) {
+    set = galleryItems.filter((el) => !el.classList.contains('is-hidden'))
+    index = Math.max(0, set.indexOf(item))
+    if (!set.length) return
+    opener = item.querySelector('.portfolio__img')
+    clearTimeout(closeTimer)
+
+    const sbw = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    if (sbw > 0) document.body.style.paddingRight = `${sbw}px`
+    document.documentElement.classList.add('lightbox-open')
+
+    render(false)
+    lb.hidden = false
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => lb.classList.add('is-open'))
+    })
+    lbClose.focus({ preventScroll: true })
+  }
+
+  function close() {
+    if (lb.hidden) return
+    lb.classList.remove('is-open')
+    clearTimeout(swapTimer)
+    closeTimer = setTimeout(() => {
+      lb.hidden = true
+      lbImg.removeAttribute('src')
+    }, 260)
+    document.body.style.overflow = ''
+    document.body.style.paddingRight = ''
+    document.documentElement.classList.remove('lightbox-open')
+    opener?.focus({ preventScroll: true })
+  }
+
+  galleryItems.forEach((item) => {
+    const img = item.querySelector('.portfolio__img')
+    img.setAttribute('tabindex', '0')
+    img.setAttribute('role', 'button')
+    img.setAttribute('aria-haspopup', 'dialog')
+    img.setAttribute('aria-label', `View larger: ${img.alt || 'photo'}`)
+    item.classList.add('is-zoomable')
+    item.addEventListener('click', () => open(item))
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault()
+        open(item)
+      }
+    })
+  })
+
+  lbClose.addEventListener('click', close)
+  lbPrev.addEventListener('click', (e) => {
+    e.stopPropagation()
+    step(-1)
+  })
+  lbNext.addEventListener('click', (e) => {
+    e.stopPropagation()
+    step(1)
+  })
+
+  // Tap/click the dark backdrop (not the photo or controls) to close
+  const isBackdrop = (el) => el === lb || el.classList?.contains('lightbox__figure')
+  let swiped = false
+  lb.addEventListener('click', (e) => {
+    if (swiped) {
+      swiped = false
+      return
+    }
+    if (isBackdrop(e.target)) close()
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (lb.hidden) return
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      e.preventDefault()
+      close()
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      step(-1)
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      step(1)
+    } else if (e.key === 'Tab') {
+      // Keep focus inside the dialog
+      const focusables = [lbClose, lbPrev, lbNext].filter((b) => !b.hidden)
+      const i = focusables.indexOf(document.activeElement)
+      e.preventDefault()
+      const n = e.shiftKey
+        ? (i <= 0 ? focusables.length - 1 : i - 1)
+        : (i + 1) % focusables.length
+      focusables[n].focus()
+    }
+  })
+
+  // Swipe left/right on touch devices
+  let tx = 0
+  let ty = 0
+  let tracking = false
+  lb.addEventListener(
+    'touchstart',
+    (e) => {
+      if (e.touches.length !== 1) {
+        tracking = false
+        return
+      }
+      tracking = true
+      tx = e.touches[0].clientX
+      ty = e.touches[0].clientY
+    },
+    { passive: true }
+  )
+  lb.addEventListener(
+    'touchend',
+    (e) => {
+      if (!tracking) return
+      tracking = false
+      const t = e.changedTouches[0]
+      const dx = t.clientX - tx
+      const dy = t.clientY - ty
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        swiped = true
+        setTimeout(() => (swiped = false), 400)
+        if (e.cancelable) e.preventDefault()
+        step(dx < 0 ? 1 : -1)
+      } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && isBackdrop(e.target)) {
+        // Close on tap directly (don't wait for a synthesized click, which
+        // browsers can skip right after a swipe/fling)
+        if (e.cancelable) e.preventDefault()
+        close()
+      }
+    },
+    { passive: false }
+  )
+}
+
 /* ---------- Year ---------- */
 document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = String(new Date().getFullYear())
