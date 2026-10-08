@@ -18,7 +18,7 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 | GoDaddy DNS | ⏳ **Kevin** — still parked (A → 3.33.130.190 / 15.197.148.33). Site is not reachable until the §4 records are in. |
 | Inquiry form → email | ✅ Wired to FormSubmit; ⏳ needs one-time activation click (see §5) |
 | Work gallery | ✅ 38 photos (9 original + 29 added Oct 7), "View more" reveal, Weddings/Engagements filters (§2b) |
-| Films section | ✅ 2 films from full-quality originals: church wedding highlight + forest/lakeside couple's film (§2c) |
+| Films section | ✅ 3 films from full-quality originals: church wedding highlight, forest/lakeside couple's film, on-the-water engagement film (§2c) |
 
 ---
 
@@ -51,18 +51,19 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 
 ## 2c. Films (wedding videography showcase)
 
-- `#films` section between Work and Packages: "Cinematic wedding videography" — two films side by side on desktop (≥900 px), stacked on mobile; footer has a "Films" link.
-- Both encoded from Kevin's full-quality originals (1920×1080, 59.94 fps, ~38 Mbps; masters stay private in `source-photos/`, never in git or `dist/`):
+- `#films` section between Work and Packages: "Cinematic wedding videography" — three films: 3-up on wide desktop (≥1100 px), 2 + 1 centered on tablets/small laptops (700–1099 px), stacked on mobile; footer has a "Films" link.
+- All encoded from Kevin's full-quality originals (the third is a 1280×720 29.97 fps master) (1920×1080, 59.94 fps, ~38 Mbps; masters stay private in `source-photos/`, never in git or `dist/`):
 
 | Film | Master | 1080p | 720p | Poster |
 |------|--------|-------|------|--------|
 | Church Wedding — Highlight Film (26 s) | EG0A4085_2.mp4 | 11.1 MB (CRF 26) | 7.6 MB (CRF 24) | 1.3 s — couple embracing on the church steps, bride smiling to camera |
 | Forest & Lakeside — Couple's Film (27 s) | EG0A5361.mp4 | 10.2 MB (CRF 25) | 6.1 MB (CRF 24) | 11.3 s — bride smiling over the groom's shoulder, bouquet, lake + golden light |
+| On the Water — Engagement Film (40 s) | EG0A1105.mp4 (720p source) | — (not upscaled) | 9.3 MB (CRF 26) | 35.6 s — couple embracing at the boat rail, both smiling, water + hills behind |
 
-  Files: `public/films/dejeu-crew-church-wedding-film-{1080,720}.mp4` + `-poster.jpg`, `public/films/dejeu-crew-forest-lakeside-film-{1080,720}.mp4` + `-poster.jpg`.
+  Files: `public/films/dejeu-crew-church-wedding-film-{1080,720}.mp4` + `-poster.jpg`, `public/films/dejeu-crew-forest-lakeside-film-{1080,720}.mp4` + `-poster.jpg`, `public/films/dejeu-crew-on-the-water-film-720.mp4` + `-poster.jpg` (single 720p `<source>`).
 - Encoding: H.264 high, 29.97 fps, AAC 128k stereo, `+faststart`. `<video controls playsinline preload="none" poster=…>`; screens ≤900 px get the 720p `<source media>`, others 1080p. Nothing downloads until play is pressed.
-- SEO: two `VideoObject`s in the home JSON-LD (PT26S / PT27S, uploadDate 2026-10-07, contentUrl = 1080p file, thumbnail = poster) and two `<video:video>` entries in `sitemap.xml`.
-- Re-encode / replace: `scripts/encode-film.sh <master> <slug> <poster-seconds> [crf1080] [crf720]` keeps the same file names. Update durations in JSON-LD + sitemap if a film's length changes.
+- SEO: three `VideoObject`s in the home JSON-LD (PT26S / PT27S / PT40S, uploadDate 2026-10-07, contentUrl = largest file, thumbnail = poster) and three `<video:video>` entries in `sitemap.xml`.
+- Re-encode / replace: `scripts/encode-film.sh <master> <slug> <poster-seconds> [crf1080] [crf720]` keeps the same file names; sources under 1080p get 720p only (no upscaling). Update durations in JSON-LD + sitemap if a film's length changes.
 
 **Book (`book.html`)**: title _Book Wedding Photography & Videography | Dejeu Crew, Modesto CA_, new description, OG/Twitter, icons, BreadcrumbList JSON-LD, keyword lead copy; public "Stripe not connected" wording replaced with "No payment is taken on this site — we'll reply with payment details."
 
@@ -84,6 +85,7 @@ Scope: **Dejeu Crew only.** This repo has nothing to do with Uplink / KevinD303/
 - History checked before pushing: no `source-photos/`, zips, video masters, WhatsApp-derived files, `.tgz`, `.env` or inquiry logs in any commit (the earlier WhatsApp-derived film was stripped from the unpushed local history). Largest file ≈ 11 MB.
 - Pages: source = GitHub Actions, custom domain `dejeucrew.com` (API: `cname: dejeucrew.com`).
 - Actions: "Deploy to GitHub Pages" — every push to `main` builds and deploys (first run 37731327609 ✅ success). Runs: https://github.com/KevinD303/dejeu-crew-site/actions
+- **Cloudflare Pages** (Kevin, in progress): the same repo is being connected as Cloudflare Pages project `dejeu-crew` — build command `npm run build`, output directory `dist`. The repo builds cleanly with exactly that (Node 20+; Vite 5; no env vars needed). `public/CNAME` is harmless on Cloudflare. If Cloudflare becomes the host, point GoDaddy DNS per Cloudflare's instructions instead of the GitHub Pages records in §4 (don't mix both), then the GitHub Pages workflow/custom domain can be removed.
 - Update flow from the box: `cd /workspace/dejeu-crew && git add -A && git commit -m "…" && git push` (gh is logged in as KevinD303).
 
 ### Default Pages URL note

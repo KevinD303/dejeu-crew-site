@@ -63,6 +63,15 @@
       <video:publication_date>2026-10-07</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://dejeucrew.com/films/dejeu-crew-on-the-water-film-poster.jpg</video:thumbnail_loc>
+      <video:title>On the Water — Engagement Film | Dejeu Crew</video:title>
+      <video:description>A cinematic engagement film by Dejeu Crew: a couple's session on the bay — a sparkling sequin dress, an embrace at the boat's rail, and sailboats and hills on the water.</video:description>
+      <video:content_loc>https://dejeucrew.com/films/dejeu-crew-on-the-water-film-720.mp4</video:content_loc>
+      <video:duration>40</video:duration>
+      <video:publication_date>2026-10-07</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
   <url>
     <loc>https://dejeucrew.com/book.html</loc>

@@ -1539,11 +1539,29 @@ h3 {
   margin-inline: auto;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .films__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 2.5rem 2rem;
   }
+  /* odd last film centers under the pair (2 + 1) */
+  .films__grid > .film:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 1100px) {
+  .films__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+  .films__grid > .film:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: auto;
+  }
+  .films__grid .film__title { font-size: 1.2rem; }
 }
 
 .film {
