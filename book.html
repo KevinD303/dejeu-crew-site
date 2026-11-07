@@ -38,9 +38,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm')</script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -58,16 +59,11 @@
     <header class="site-header is-scrolled">
       <nav class="nav" aria-label="Primary">
         <a class="nav__brand" href="/" aria-label="Dejeu Crew home">
-          <img
-            class="nav__monogram"
-            src="/assets/logo-monogram-dc-square.png"
-            alt="Dejeu Crew DC monogram"
-            width="40"
-            height="40"
-          />
+          <span class="nav__monogram" role="img" aria-label="Dejeu Crew"></span>
         </a>
         <ul class="nav__links">
           <li><a href="/#work">Work</a></li>
+          <li><a href="/#films">Films</a></li>
           <li><a href="/#services">Packages</a></li>
           <li><a href="/#about">About</a></li>
         </ul>
@@ -86,6 +82,7 @@
 
     <div class="nav-mobile" id="mobile-nav">
       <a href="/#work">Work</a>
+      <a href="/#films">Films</a>
       <a href="/#services">Packages</a>
       <a href="/#about">About</a>
       <a href="/book.html">Book</a>
@@ -96,7 +93,7 @@
         <div class="container">
           <p class="eyebrow">Book</p>
           <hr class="hairline hairline--center" />
-          <h1 class="display" style="font-size: clamp(2.25rem, 6vw, 3.75rem)">
+          <h1 class="display">
             Inquire or<br />reserve your date
           </h1>
           <p class="lead">
@@ -324,7 +321,7 @@
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <img class="footer__script" src="/assets/logo-script-a.svg" alt="Dejeu Crew" width="128" height="97" loading="lazy" decoding="async" />
+            <span class="footer__script" role="img" aria-label="Dejeu Crew"></span>
             <p>
               Wedding photography &amp; videography — California Valley, Bay Area &amp;
               Sacramento Region. <a href="https://dejeucrew.com/">dejeucrew.com</a>
