@@ -3,7 +3,6 @@
  */
 
 import './style.css'
-import { initDarkroom } from './darkroom.js'
 
 /* ---------- Mobile nav ---------- */
 const toggle = document.querySelector('.nav__toggle')
@@ -35,10 +34,35 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true })
 onScroll()
 
-/* ---------- Portfolio filters ---------- */
+/* ---------- Portfolio filters + "View more" ---------- */
 const filterBtns = document.querySelectorAll('.filter-btn')
 const items = document.querySelectorAll('.portfolio__item')
+const portfolio = document.querySelector('.portfolio')
+const moreBtn = document.querySelector('.portfolio-more__btn')
+const moreCount = portfolio ? portfolio.querySelectorAll('.portfolio__item--more').length : 0
+let expanded = false
 let activeFilter = 'all'
+
+// All images stay in the HTML (crawlable); JS collapses the extras on load.
+function syncMore() {
+  if (!portfolio || !moreBtn || !moreCount) return
+  const collapse = activeFilter === 'all' && !expanded
+  portfolio.classList.toggle('is-collapsed', collapse)
+  moreBtn.hidden = activeFilter !== 'all'
+  moreBtn.setAttribute('aria-expanded', String(!collapse))
+  moreBtn.innerHTML = collapse
+    ? `View more work <span class="portfolio-more__count">(${moreCount})</span>`
+    : 'Show less'
+}
+
+if (moreBtn) {
+  moreBtn.addEventListener('click', () => {
+    expanded = !expanded
+    syncMore()
+    if (!expanded) document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })
+  })
+}
+syncMore()
 
 filterBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -52,6 +76,7 @@ filterBtns.forEach((btn) => {
       const match = cat === 'all' || item.dataset.category === cat
       item.classList.toggle('is-hidden', !match)
     })
+    syncMore()
   })
 })
 
@@ -246,8 +271,6 @@ const FORMSUBMIT_AJAX = `https://formsubmit.co/ajax/${INQUIRY_EMAIL}`
 const IS_LOCAL = ['localhost', '127.0.0.1', '::1', '[::1]', ''].includes(
   window.location.hostname
 )
-// Only the real domain may send. A design preview must never email the business.
-const IS_LIVE = /(^|\.)dejeucrew\.com$/.test(window.location.hostname)
 
 async function postJson(url, payload, headers = {}) {
   try {
@@ -302,8 +325,6 @@ function mailtoHref(payload) {
 }
 
 async function submitBooking(payload) {
-  if (!IS_LOCAL && !IS_LIVE) return { ok: false, via: 'preview' }
-
   if (IS_LOCAL) {
     const endpoint =
       payload.type === 'deposit_intent' ? '/api/deposit-intent' : '/api/inquiry'
@@ -322,15 +343,7 @@ function showSuccess(payload, result) {
   const message = document.getElementById('success-message')
   const fallback = document.getElementById('success-fallback')
 
-  if (result.via === 'preview') {
-    if (eyebrow) eyebrow.textContent = 'Preview'
-    if (heading) heading.textContent = 'Nothing was sent'
-    if (message) {
-      message.textContent =
-        'This is a private design preview, so the form stops here. On dejeucrew.com it sends to dejeu.crew@gmail.com.'
-    }
-    if (fallback) fallback.hidden = true
-  } else if (!result.ok) {
+  if (!result.ok) {
     const href = mailtoHref(payload)
     if (eyebrow) eyebrow.textContent = 'One more step'
     if (heading) heading.textContent = 'Send it by email'
@@ -690,5 +703,3 @@ if (galleryItems.length) {
 document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = String(new Date().getFullYear())
 })
-
-if (document.getElementById('roll')) initDarkroom()
